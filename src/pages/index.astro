@@ -1,0 +1,80 @@
+---
+import AboutSection from "@src/components/AboutSection.astro";
+import BlogSection from "@src/components/BlogSection.astro";
+import CtaSection from "@src/components/CtaSection.astro";
+import HeroSection from "@src/components/HeroSection.astro";
+import TourSection from "@src/components/TourSection.astro";
+import WhySection from "@src/components/WhySection.astro";
+import MainLayout from "@src/layouts/MainLayout.astro";
+---
+
+<MainLayout title="西藏旅游 | 探秘雪域圣地" description="专注西藏深度旅行，专业导游，高原安全保障，带您体验世界屋脊的壮美。">
+  <HeroSection
+      backgroundImage="/img/hero.jpg"
+      badgeText="全球旅行者信赖之选"
+      title="探秘雪域西藏 | 感受世界之巅"
+      description="从神山圣湖到藏地秘境，我们为您打造安全、深度、难忘的高原之旅。专业导游带队，小团出行，让您尽享西藏的壮美与神秘。"
+      avatars={[
+        { src: "/img/male1.jpg", alt: "旅行者1" },
+        { src: "/img/male2.jpg", alt: "旅行者2" },
+        { src: "/img/female1.jpg", alt: "旅行者3" },
+        { src: "/img/female2.jpg", alt: "旅行者4" },
+      ]}
+      reviewText="900+ 条好评"
+      rating={5}
+      ctas={[
+        {
+          label: "旅游线路",
+          href: "#packages",
+          className: "bg-blue-700 hover:bg-blue-800 text-white",
+        },
+        {
+          label: "关于我们",
+          href: "#about",
+          className: "bg-green-700 hover:bg-green-800 text-white",
+        },
+      ]}
+    />
+  <WhySection title="为什么选择我们？" />
+  <TourSection />
+  <AboutSection />
+  <CtaSection />
+  <BlogSection
+      id="blogs"
+      title="西藏旅行日记"
+      description="来自旅行者的真实故事与灵感，探索西藏的无限魅力。"
+      maxPosts={3}
+    />
+</MainLayout>
+<script>
+  /**
+   * Smooth Scroll
+   */
+  (function initSmoothScroll(offset: number = 80): void {
+    document
+      .querySelectorAll<HTMLAnchorElement>('a[href^="#"]')
+      .forEach((anchor) => {
+        anchor.addEventListener("click", (e: MouseEvent) => {
+          const href = anchor.getAttribute("href");
+          if (!href || href === "#" || href.length < 2) return;
+
+          const target = document.querySelector<HTMLElement>(href);
+          if (!target) return;
+
+          e.preventDefault();
+
+          const top =
+            target.getBoundingClientRect().top +
+            window.pageYOffset -
+            offset;
+
+          window.scrollTo({
+            top,
+            behavior: "smooth",
+          });
+
+          history.pushState(null, "", href);
+        });
+      });
+  })(80);
+</script>

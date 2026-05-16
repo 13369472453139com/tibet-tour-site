@@ -1,0 +1,75 @@
+---
+import Button from "@src/components/Button.astro";
+
+/* =========================
+   Types
+========================= */
+export interface CtaButton {
+  label: string;
+  href?: string;
+  variant?: "primary" | "outline" | "success" | "white";
+  className?: string;
+}
+
+export interface CtaSectionProps {
+  title: string;
+  description: string;
+  backgroundImage: string;
+  buttons: CtaButton[];
+}
+
+/* =========================
+   西藏旅游行动呼吁数据
+========================= */
+const {
+  title = "准备探索雪域西藏？",
+  description = "立即预订您的西藏之旅，专业导游带队，高原安全保障，让您安心体验世界屋脊的壮美。",
+  backgroundImage = "/img/about-sea.jpg",   // 可更换为西藏图片
+  buttons = [
+    {
+      label: "立即预订",
+      href: "/booking",
+      variant: "white",
+    },
+    {
+      label: "联系我们",
+      href: "/contact",
+      variant: "outline",
+    },
+  ],
+} = Astro.props as CtaSectionProps;
+---
+
+<!-- CTA Section -->
+<section
+  class="relative py-16 md:py-20 overflow-hidden"
+  style={`background-image: url('${backgroundImage}');
+         background-size: cover;
+         background-position: center;
+         background-attachment: fixed;`}
+>
+  <div class="max-w-6xl mx-auto px-4">
+    <div class="rounded-3xl border border-white/10 bg-black/30 backdrop-blur-md p-10 text-center">
+      
+      <h2 class="text-3xl md:text-4xl font-semibold text-white">
+        {title}
+      </h2>
+
+      <p class="mt-4 text-white/80 max-w-2xl mx-auto">
+        {description}
+      </p>
+
+      <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
+        {buttons.map((btn) => (
+          <Button
+            href={btn.href}
+            label={btn.label}
+            variant={btn.variant}
+            className="max-sm:w-full"
+          />
+        ))}
+      </div>
+
+    </div>
+  </div>
+</section>

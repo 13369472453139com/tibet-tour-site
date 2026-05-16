@@ -1,0 +1,31 @@
+---
+import MainLayout from "@src/layouts/MainLayout.astro";
+---
+
+<MainLayout title="西藏旅行博客" description="旅行故事与实用攻略">
+  <div class="py-12 bg-white">
+    <div class="container mx-auto px-4">
+      <h1 class="text-3xl font-bold text-center mb-8">所有博客</h1>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="bg-white rounded-lg shadow p-6">
+          <h3 class="text-xl font-semibold mb-2">最佳进藏时间指南</h3>
+          <p class="text-gray-600 mb-4">什么时候去西藏最合适？四季美景与旅行建议。</p>
+          <p class="text-sm text-gray-400">2025年5月14日</p>
+          <a href="/blogs/best-time-to-visit-tibet" class="inline-block mt-4 text-blue-600 hover:underline">阅读更多 →</a>
+        </div>
+        <div class="bg-white rounded-lg shadow p-6">
+          <h3 class="text-xl font-semibold mb-2">西藏文化礼仪须知</h3>
+          <p class="text-gray-600 mb-4">尊重当地习俗，让您的旅途更和谐愉快。</p>
+          <p class="text-sm text-gray-400">2025年5月10日</p>
+          <a href="/blogs/tibet-culture-etiquette" class="inline-block mt-4 text-blue-600 hover:underline">阅读更多 →</a>
+        </div>
+        <div class="bg-white rounded-lg shadow p-6">
+          <h3 class="text-xl font-semibold mb-2">高原徒步装备清单</h3>
+          <p class="text-gray-600 mb-4">资深向导推荐的高原徒步必备物品。</p>
+          <p class="text-sm text-gray-400">2025年5月6日</p>
+          <a href="/blogs/plateau-hiking-gear" class="inline-block mt-4 text-blue-600 hover:underline">阅读更多 →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</MainLayout>
