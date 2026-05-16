@@ -1,10 +1,8 @@
 ---
 title: "珠峰大本营挑战之旅"
 description: "近距离仰望世界之巅，体验极致高原风光，4天3晚"
-pricing:
-  - price: 3850
-    duration: "4天3晚"
-    description: "标准团"
+price: 3850
+duration: "4天3晚"
 image: "/img/tour-everest.jpg"
 slug: "everest-basecamp"
 ---
