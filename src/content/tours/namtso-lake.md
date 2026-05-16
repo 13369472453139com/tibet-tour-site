@@ -1,10 +1,8 @@
 ---
 title: "纳木错圣湖之旅"
 description: "世界海拔最高的咸水湖，雪山与湖水相映，2天1晚"
-pricing:
-  - price: 1280
-    duration: "2天1晚"
-    description: "标准团"
+price: 1280
+duration: "2天1晚"
 image: "/img/tour-namtso.jpg"
 slug: "namtso-lake"
 ---
