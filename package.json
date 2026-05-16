@@ -1,0 +1,26 @@
+{
+  "name": "ocean-astro",
+  "type": "module",
+  "version": "1.1.0",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "generate:tour": "node scripts/generate-tour.js",
+    "generate:blog": "node scripts/generate-blog.js"
+  },
+  "dependencies": {
+    "@astrojs/mdx": "^5",
+    "@iconify-json/bi": "^1.2.7",
+    "alpinejs": "^3.15.8",
+    "astro": "^6",
+    "astro-icon": "^1.1.5",
+    "dotenv": "^17.4.2",
+    "glightbox": "^3.3.1",
+    "openai": "^6.37.0"
+  },
+  "devDependencies": {
+    "@types/alpinejs": "^3.13.11"
+  }
+}
