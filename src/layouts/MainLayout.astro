@@ -5,7 +5,6 @@ import Footer from '@src/components/Footer.astro';
 import 'glightbox/dist/css/glightbox.min.css';
 import BackToTop from '@src/components/BackToTop.astro';
 
-// 导航栏菜单项（已中文化）
 const navItems = [
   { label: "首页", href: "/" },
   { label: "关于我们", href: "/about" },
@@ -31,78 +30,45 @@ const {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
-
-    <!-- Primary Meta -->
     <meta name="description" content={description} />
     <meta name="author" content="西藏旅游" />
     <meta name="robots" content="index, follow" />
-
     <link rel="canonical" href={Astro.url?.href || "https://tibet-travel.com"} />
     <link rel="icon" type="image/x-icon" href="/img/favicon.png" />
   </head>
-
   <body class="font-sans bg-blue-950">
     <Header
-      logo={{
-        src: "/img/logo.png",
-        alt: "西藏旅游",
-        href: "/",
-      }}
+      logo={{ src: "/img/logo.png", alt: "西藏旅游", href: "/" }}
       navItems={navItems}
-      cta={{
-        label: "立即预订",
-        href: "/booking",
-      }}
+      cta={{ label: "立即预订", href: "/booking" }}
     />
-    <main>
-      <slot />
-    </main>
+    <main><slot /></main>
     <Footer
       backgroundImage="/img/tour5.jpg"
       about={{
         title: "关于我们",
-        description: "专注西藏深度旅行，专业导游，高原安全保障，带您探秘世界屋脊的壮美与神秘。",
+        description: "专注西藏深度旅行，专业导游，高原安全保障，带您探秘世界屋脊的壮美与神秘。"
       }}
       navigation={[
         { label: "旅游线路", href: "/tours" },
         { label: "隐私政策", href: "/privacy" },
         { label: "服务条款", href: "/terms" },
-        { label: "旅行文档", href: "/documentation" },
+        { label: "旅行文档", href: "/documentation" }
       ]}
-      destinations={[
-        "拉萨",
-        "纳木错",
-        "珠峰大本营",
-        "林芝",
-        "日喀则",
-      ]}
+      destinations={["拉萨", "纳木错", "珠峰大本营", "林芝", "日喀则"]}
       copyright="© 2025 西藏旅游. 保留所有权利。"
     />
     <BackToTop />
-
-    <!-- Alpine.js -->
     <script>
       import Alpine from 'alpinejs';
-      declare global {
-        interface Window {
-          Alpine: typeof Alpine;
-        }
-      }
       window.Alpine = Alpine;
       Alpine.start();
     </script>
-
-    <!-- GLightbox -->
     <script>
       import GLightbox from 'glightbox';
-
       const hasLightbox = document.querySelector('.glightbox');
       if (hasLightbox) {
-        GLightbox({
-          selector: '.glightbox',
-          touchNavigation: true,
-          loop: true,
-        });
+        GLightbox({ selector: '.glightbox', touchNavigation: true, loop: true });
       }
     </script>
   </body>
