@@ -1,55 +1,25 @@
-import { defineCollection } from "astro:content";
-import { glob } from "astro/loaders";
-import { z } from "astro/zod";
+import { defineCollection, z } from 'astro:content';
 
-const pages = defineCollection({
-  loader: glob({ pattern: "**/*.mdx", base: "./src/content/pages" }),
+const tours = defineCollection({
+  type: 'content', // 加载 .md 和 .mdx 文件
   schema: z.object({
     title: z.string(),
-    updated: z.string().optional(),
+    description: z.string(),
+    price: z.number(),
+    duration: z.string(),
+    image: z.string(),
+    slug: z.string(),
   }),
 });
 
 const blog = defineCollection({
-  loader: glob({ pattern: "**/*.mdx", base: "./src/content/blog" }),
+  type: 'content',
   schema: z.object({
     title: z.string(),
-    cover: z.string(),
-    date: z.string(),
-    category: z.string(),
-    tags: z.array(z.string()),
-    readTime: z.number(),
     description: z.string(),
-    author: z.object({
-      name: z.string(),
-      job: z.string(),
-      avatar: z.string(),
-    }),
+    date: z.date(),
+    slug: z.string(),
   }),
 });
 
-const tours = defineCollection({
-  loader: glob({ pattern: "**/*.mdx", base: "./src/content/tours" }),
-  schema: z.object({
-    title: z.string(),
-    category: z.string(),
-    description: z.string(),
-    cover: z.string(),
-    gallery: z.array(z.string()).optional(),
-    duration: z.string(),
-    location: z.string(),
-    price: z.number().optional(),
-    pricing: z.array(
-      z.object({
-        label: z.string(),
-        price: z.number(),
-        multiplier: z.number().optional(),
-      })
-    ),
-    rating: z.number().optional(),
-    reviews: z.number().optional(),
-    facilities: z.array(z.string()).optional(),
-  }),
-});
-
-export const collections = { pages, blog, tours };
+export const collections = { tours, blog };
