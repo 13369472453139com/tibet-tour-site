@@ -1,10 +1,8 @@
 ---
 title: "拉萨朝圣之旅"
 description: "布达拉宫、大昭寺、八廓街，4天3晚深度体验藏地文化"
-pricing:
-  - price: 2980
-    duration: "4天3晚"
-    description: "标准团"
+price: 2980
+duration: "4天3晚"
 image: "/img/tour-lhasa.jpg"
 slug: "lhasa-pilgrim"
 ---
