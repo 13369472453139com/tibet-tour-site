@@ -52,7 +52,7 @@ price: ${data.price}
 image: "${data.image}"
 ---
 ${data.content}`;
-  const filePath = `src/content/tours/${data.slug}.md`;
+  const filePath = `src/content/tours/${data.slug}.mdx`;
   writeFileSync(filePath, md, 'utf8');
   console.log(`✅ 新线路已生成：${filePath}`);
 }
