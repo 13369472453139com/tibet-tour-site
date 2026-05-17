@@ -22,12 +22,26 @@ function extractJSON(str) {
   return JSON.parse(jsonStr);
 }
 
-// 根据主题关键词生成 Unsplash 图片 URL（免费、无需 API 密钥）
+// 根据主题关键词生成 Unsplash 图片 URL
 function getUnsplashImage(title) {
-  // 提取关键词：去除标点、空格，取前两个词
   const keyword = title.replace(/[，,？?！!、；;：:]/g, '').split(/\s+/).slice(0, 2).join(' ');
-  // 使用 Unsplash 的 Source API（随机相关图片，尺寸 1200x800）
   return `https://source.unsplash.com/featured/1200x800?${encodeURIComponent(keyword)}`;
+}
+
+// 生成英文 slug（只保留字母数字和连字符）
+function generateSlug(title) {
+  // 先移除中文和特殊字符，只保留字母、数字、空格
+  const latin = title.replace(/[^\w\s]/g, '')
+    .replace(/[一二三四五六七八九十百千万]/g, '')
+    .replace(/[高原反应预防应对西藏旅行必备指南]/g, '');
+  
+  // 如果上述方法得不到英文，使用时间戳
+  if (!latin.match(/[a-zA-Z]/)) {
+    return 'blog-' + Date.now();
+  }
+  
+  // 转换为小写，空格替换为连字符
+  return latin.toLowerCase().replace(/\s+/g, '-').substring(0, 50);
 }
 
 async function generateBlog() {
@@ -54,11 +68,12 @@ async function generateBlog() {
     data = extractJSON(raw);
   }
 
-  const slug = data.title.toLowerCase().replace(/\s+/g, '-').replace(/[，？、！【】（）]/g, '');
+  // 生成英文 slug（关键修复）
+  const slug = generateSlug(data.title);
   const today = new Date().toISOString().slice(0, 10);
-  const imageUrl = getUnsplashImage(data.title);  // 新增：根据标题生成图片 URL
+  const imageUrl = getUnsplashImage(data.title);
 
-  const md = `---
+  const mdx = `---
 title: "${data.title}"
 description: "${data.description}"
 date: ${today}
@@ -69,9 +84,10 @@ image: "${imageUrl}"
 ${data.content}`;
 
   const filePath = `src/content/blog/${slug}.mdx`;
-  writeFileSync(filePath, md, 'utf8');
+  writeFileSync(filePath, mdx, 'utf8');
   console.log(`✅ 新博客已生成：${filePath}`);
   console.log(`🖼️  图片地址：${imageUrl}`);
+  console.log(`🔖  slug: ${slug}`);
 }
 
 generateBlog().catch(console.error);
