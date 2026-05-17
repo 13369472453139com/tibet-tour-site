@@ -68,7 +68,7 @@ image: "${imageUrl}"
 
 ${data.content}`;
 
-  const filePath = `src/content/blog/${slug}.md`;
+  const filePath = `src/content/blog/${slug}.mdx`;
   writeFileSync(filePath, md, 'utf8');
   console.log(`✅ 新博客已生成：${filePath}`);
   console.log(`🖼️  图片地址：${imageUrl}`);
