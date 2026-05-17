@@ -1,7 +1,7 @@
 import { defineCollection, z } from 'astro:content';
 
 const tours = defineCollection({
-  type: 'content', // 加载 .md 和 .mdx 文件
+  type: 'content',
   schema: z.object({
     title: z.string(),
     description: z.string(),
@@ -17,8 +17,9 @@ const blog = defineCollection({
   schema: z.object({
     title: z.string(),
     description: z.string(),
-    date: z.date(),
+    date: z.string(),  // 改为字符串，兼容 "2026-05-17" 格式
     slug: z.string(),
+    image: z.string().optional(),  // 可选字段
   }),
 });
 
